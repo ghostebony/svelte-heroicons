@@ -63,9 +63,7 @@ function main(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
 
 				const compFilePath = join(compFolderPath, compFileName);
 
-				copyFileSync(join(from, fileOrFolder), compFilePath);
-
-				const data = readFileSync(compFilePath, "utf-8");
+				const data = readFileSync(join(from, fileOrFolder), "utf-8");
 
 				writeFileSync(
 					compFilePath,
