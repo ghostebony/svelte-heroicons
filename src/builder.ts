@@ -60,13 +60,15 @@ function main(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
 
 				!existsSync(compFolderPath) && mkdirSync(compFolderPath);
 
-				const compFilePath = join(compFolderPath, compFileName);
-
-				const data = readFileSync(join(from, fileOrFolder), "utf-8");
-
 				writeFileSync(
-					compFilePath,
-					ICON_TEMPLATE.replace("%svg%", data.replace(SVG.regex, SVG.replacer)),
+					join(compFolderPath, compFileName),
+					ICON_TEMPLATE.replace(
+						"%svg%",
+						readFileSync(join(from, fileOrFolder), "utf-8").replace(
+							SVG.regex,
+							SVG.replacer
+						)
+					),
 					"utf-8"
 				);
 
