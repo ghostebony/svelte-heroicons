@@ -1,6 +1,5 @@
 import {
 	appendFileSync,
-	copyFileSync,
 	existsSync,
 	lstatSync,
 	mkdirSync,
