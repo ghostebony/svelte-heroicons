@@ -1,4 +1,4 @@
-# svelte-heroicons
+# @ghostebony/svelte-heroicons
 
 ## About
 
@@ -9,19 +9,19 @@
 With npm:
 
 ```
-npm i -D svelte-heroicons
+npm i -D @ghostebony/svelte-heroicons
 ```
 
 With yarn:
 
 ```
-yarn add -D svelte-heroicons
+yarn add -D @ghostebony/svelte-heroicons
 ```
 
 With pnpm:
 
 ```
-pnpm add -D svelte-heroicons
+pnpm add -D @ghostebony/svelte-heroicons
 ```
 
 ## Usage
@@ -30,8 +30,8 @@ pnpm add -D svelte-heroicons
 
 ```svelte
 <script>
-	// import { AcademicCapIcon } from "svelte-heroicons/20/outline";
-	import AcademicCapIcon from "svelte-heroicons/20/outline/academic-cap";
+	// import { AcademicCapIcon } from "@ghostebony/svelte-heroicons/20/outline";
+	import AcademicCapIcon from "@ghostebony/svelte-heroicons/20/outline/academic-cap";
 </script>
 
 <AcademicCapIcon />
@@ -41,8 +41,8 @@ pnpm add -D svelte-heroicons
 
 ```svelte
 <script>
-	// import { AcademicCapIcon } from "svelte-heroicons/20/solid";
-	import AcademicCapIcon from "svelte-heroicons/20/solid/academic-cap";
+	// import { AcademicCapIcon } from "@ghostebony/svelte-heroicons/20/solid";
+	import AcademicCapIcon from "@ghostebony/svelte-heroicons/20/solid/academic-cap";
 </script>
 
 <AcademicCapIcon />
