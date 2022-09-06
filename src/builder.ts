@@ -1,8 +1,10 @@
 import {
 	appendFileSync,
+	closeSync,
 	existsSync,
 	lstatSync,
 	mkdirSync,
+	openSync,
 	readdirSync,
 	readFileSync,
 	rmSync,
@@ -34,6 +36,13 @@ const SVG_OUTLINE = {
 };
 
 existsSync(DEST_HEROICONS_PATH) && rmSync(DEST_HEROICONS_PATH, { recursive: true });
+
+const indexFile = join(DEST_HEROICONS_PATH, "index.js");
+
+if (!existsSync(indexFile)) {
+	mkdirSync(DEST_HEROICONS_PATH);
+	closeSync(openSync(indexFile, "w"));
+}
 
 function main(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
 	!existsSync(to) && mkdirSync(to);
