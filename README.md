@@ -30,14 +30,25 @@ pnpm add -D @ghostebony/svelte-heroicons
 
 ```svelte
 <script>
-	// import { AcademicCapIcon } from "@ghostebony/svelte-heroicons/20/outline";
-	import AcademicCapIcon from "@ghostebony/svelte-heroicons/20/outline/academic-cap";
+	// import { AcademicCapIcon } from "@ghostebony/svelte-heroicons/24/outline";
+	import AcademicCapIcon from "@ghostebony/svelte-heroicons/24/outline/academic-cap";
 </script>
 
 <AcademicCapIcon />
 ```
 
 ### Solid [demo](https://svelte.dev/repl/1152f4d7febe43c6871445df037feb7a?version=3.50.0)
+
+```svelte
+<script>
+	// import { AcademicCapIcon } from "@ghostebony/svelte-heroicons/24/solid";
+	import AcademicCapIcon from "@ghostebony/svelte-heroicons/24/solid/academic-cap";
+</script>
+
+<AcademicCapIcon />
+```
+
+### Solid Mini [demo](https://svelte.dev/repl/8f1845d1ce364c099b4ecf1bc9ac9b5d?version=3.50.0)
 
 ```svelte
 <script>
