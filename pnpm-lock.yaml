@@ -10,7 +10,7 @@ specifiers:
   eslint: ^8.23.1
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
-  heroicons: ^2.0.11
+  heroicons: ^2.0.12
   prettier: ^2.7.1
   prettier-plugin-svelte: ^2.7.0
   svelte: ^3.50.1
@@ -31,7 +31,7 @@ devDependencies:
   eslint: 8.23.1
   eslint-config-prettier: 8.5.0_eslint@8.23.1
   eslint-plugin-svelte3: 4.0.0_rhh4tpcyg7zwtq6pdnkzw5gxma
-  heroicons: 2.0.11
+  heroicons: 2.0.12
   prettier: 2.7.1
   prettier-plugin-svelte: 2.7.0_nk6d2fkgcllkkdynqbuearcure
   svelte: 3.50.1
@@ -1304,8 +1304,8 @@ packages:
       function-bind: 1.1.1
     dev: true
 
-  /heroicons/2.0.11:
-    resolution: {integrity: sha512-pjp6xFVNuc7So67RcHD0krrjkvxiUfNh1/48Pvi4SKVeT2qRlunWnKmqCpGpKGpvFl2rQSmkdHFXLVvgR145dg==}
+  /heroicons/2.0.12:
+    resolution: {integrity: sha512-fqK3k5a1F5eUf74cebh2Ng82lCskDwMbMno9f/BCyZQjSJ8bXKl7jK3507pOSIvB2QrZjF9SD0YQzkKUx1iiNw==}
     dev: true
 
   /https-proxy-agent/5.0.1:
