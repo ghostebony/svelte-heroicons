@@ -44,7 +44,7 @@ if (!existsSync(indexFile)) {
 	closeSync(openSync(indexFile, "w"));
 }
 
-function main(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
+function builder(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
 	!existsSync(to) && mkdirSync(to);
 
 	const isSolid = to.includes("solid");
@@ -100,10 +100,10 @@ function main(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
 					"utf-8"
 				);
 			} else {
-				main(join(from, fileOrFolder), join(to, fileOrFolder));
+				builder(join(from, fileOrFolder), join(to, fileOrFolder));
 			}
 		}
 	}
 }
 
-main();
+builder();
