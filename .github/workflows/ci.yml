@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: svelte-kit sync
+        run: pnpm svelte-kit sync
+
       - name: Build icons
         run: pnpm build:step:1
 
