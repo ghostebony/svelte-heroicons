@@ -3,7 +3,7 @@ name: Publish to NPM
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   publish:
@@ -24,15 +24,18 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        
+
       - name: Build icons
-        run: pnpm build:heroicons
+        run: pnpm build:step:1
 
       - name: Lint code
         run: pnpm lint
-        
+
       - name: Build package
-        run: pnpm build
+        run: pnpm build:step:2
+
+      - name: Build types
+        run: pnpm build:step:3
 
       - name: Publish package
         run: pnpm publish package/ --no-git-checks
