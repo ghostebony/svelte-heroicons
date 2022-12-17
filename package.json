@@ -16,7 +16,7 @@
 		"preinstall": "npx only-allow pnpm",
 		"dev": "vite dev",
 		"build": "svelte-kit sync && svelte-package",
-		"build:heroicons": "node --loader ts-node/esm ./src/builder.ts",
+		"build:heroicons": "node --loader ts-node/esm ./src/builder/icons.ts",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
