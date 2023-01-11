@@ -23,7 +23,7 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write ."
 	},
-	"packageManager": "pnpm@7.19.0",
+	"packageManager": "pnpm@7.24.3",
 	"engines": {
 		"pnpm": "^7.0.0"
 	},
