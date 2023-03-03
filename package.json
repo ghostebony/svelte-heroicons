@@ -15,22 +15,32 @@
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
 		"dev": "vite dev",
+		"build": "vite build && pnpm package",
+		"preview": "vite preview",
+		"build:steps:1-5": "pnpm build:step:1 && pnpm build:step:2 && pnpm build:step:3 && pnpm build:step:4 && pnpm build:step:5",
 		"build:step:1": "node --loader ts-node/esm ./src/builder/icons.ts",
-		"build:step:2": "svelte-package",
-		"build:step:3": "node --loader ts-node/esm ./src/builder/types.ts",
+		"build:step:2": "pnpm lint",
+		"build:step:3": "svelte-package",
+		"build:step:4": "node --loader ts-node/esm ./src/builder/types.ts",
+		"build:step:5": "node --loader ts-node/esm ./src/builder/package.ts",
+		"package": "svelte-kit sync && pnpm build:steps:1-5 && publint",
+		"prepublishOnly": "pnpm package",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"packageManager": "pnpm@7.19.0",
 	"engines": {
 		"pnpm": "^7.0.0"
 	},
+	"peerDependencies": {
+		"svelte": "^3.54.0"
+	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.9.3",
-		"@sveltejs/package": "^1.0.2",
+		"@sveltejs/package": "^2.0.2",
 		"@types/node": "^18.14.5",
 		"@typescript-eslint/eslint-plugin": "^5.54.0",
 		"@typescript-eslint/parser": "^5.54.0",
@@ -40,11 +50,52 @@
 		"heroicons": "2.0.13",
 		"prettier": "^2.8.4",
 		"prettier-plugin-svelte": "^2.9.0",
+		"publint": "^0.1.9",
 		"svelte": "^3.55.1",
 		"svelte-check": "^3.0.4",
 		"ts-node": "^10.9.1",
 		"tslib": "^2.5.0",
 		"typescript": "^4.9.5",
 		"vite": "^4.1.4"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js",
+			"default": "./dist/index.js"
+		},
+		"./20/solid": {
+			"types": "./dist/20/solid/index.d.ts",
+			"svelte": "./dist/20/solid/index.js",
+			"default": "./dist/20/solid/index.js"
+		},
+		"./24/outline": {
+			"types": "./dist/24/outline/index.d.ts",
+			"svelte": "./dist/24/outline/index.js",
+			"default": "./dist/24/outline/index.js"
+		},
+		"./24/solid": {
+			"types": "./dist/24/solid/index.d.ts",
+			"svelte": "./dist/24/solid/index.js",
+			"default": "./dist/24/solid/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"typesVersions": {
+		">4.0": {
+			"20/solid": [
+				"./dist/20/solid/index.d.ts"
+			],
+			"24/outline": [
+				"./dist/24/outline/index.d.ts"
+			],
+			"24/solid": [
+				"./dist/24/solid/index.d.ts"
+			]
+		}
 	}
 }

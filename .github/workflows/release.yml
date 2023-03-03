@@ -25,22 +25,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: svelte-kit sync
-        run: pnpm svelte-kit sync
-
-      - name: Build icons
-        run: pnpm build:step:1
-
-      - name: Lint code
-        run: pnpm lint
-
-      - name: Build package
-        run: pnpm build:step:2
-
-      - name: Build types
-        run: pnpm build:step:3
-
       - name: Publish package
-        run: pnpm publish package/ --no-git-checks
+        run: pnpm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

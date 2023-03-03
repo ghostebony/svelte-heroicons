@@ -1,7 +1,7 @@
 import { lstatSync, readdirSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 
-const SRC_PACKAGE_PATH = "./package";
+const SRC_PACKAGE_PATH = "./dist";
 
 function builder(path: string = SRC_PACKAGE_PATH) {
 	for (const fileOrFolder of readdirSync(path)) {
