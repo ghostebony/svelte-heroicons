@@ -42,3 +42,5 @@ function builder(path: string = SRC_PACKAGE_PATH) {
 		}
 	}
 }
+
+builder();
