@@ -1,12 +1,4 @@
-import {
-	existsSync,
-	lstatSync,
-	readdirSync,
-	readFileSync,
-	renameSync,
-	rmSync,
-	writeFileSync,
-} from "fs";
+import { lstatSync, readdirSync } from "fs";
 import { join } from "path";
 
 const SRC_PACKAGE_FOLDER = "dist";
