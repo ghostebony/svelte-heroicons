@@ -1,4 +1,4 @@
-import { lstatSync, readdirSync } from "fs";
+import { lstatSync, readdirSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 
 const SRC_PACKAGE_FOLDER = "dist";
@@ -44,3 +44,10 @@ function builder(path: string = SRC_PACKAGE_PATH) {
 }
 
 builder();
+
+const pkg = JSON.parse(readFileSync("package.json", "utf-8"));
+
+pkg.exports = Object.assign(pkg.exports, exports);
+pkg.typesVersions[">4.0"] = Object.assign(pkg.typesVersions[">4.0"], typesVersions);
+
+writeFileSync("package.json", JSON.stringify(pkg, null, 2));
