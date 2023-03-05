@@ -30,11 +30,11 @@ jobs:
       - name: Lint code
         run: pnpm lint
 
-      - name: Build icons
-        run: pnpm build:icons
-
       - name: svelte-kit sync
         run: pnpm svelte-kit sync
+
+      - name: Build icons
+        run: pnpm build:icons
 
       - name: Check code
         run: pnpm check
