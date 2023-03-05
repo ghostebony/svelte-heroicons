@@ -59,42 +59,83 @@
 		"vite": "^4.1.4"
 	},
 	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"svelte": "./dist/index.js",
-			"default": "./dist/index.js"
-		},
 		"./20/solid": {
 			"types": "./dist/20/solid/index.d.ts",
 			"svelte": "./dist/20/solid/index.js",
 			"default": "./dist/20/solid/index.js"
+		},
+		"./20/solid/*": {
+			"types": "./dist/20/solid/*.svelte.d.ts",
+			"svelte": "./dist/20/solid/*.svelte",
+			"default": "./dist/20/solid/*.svelte"
+		},
+		"./20/solid/*.svelte": {
+			"types": "./dist/20/solid/*.svelte.d.ts",
+			"svelte": "./dist/20/solid/*.svelte",
+			"default": "./dist/20/solid/*.svelte"
 		},
 		"./24/outline": {
 			"types": "./dist/24/outline/index.d.ts",
 			"svelte": "./dist/24/outline/index.js",
 			"default": "./dist/24/outline/index.js"
 		},
+		"./24/outline/*": {
+			"types": "./dist/24/outline/*.svelte.d.ts",
+			"svelte": "./dist/24/outline/*.svelte",
+			"default": "./dist/24/outline/*.svelte"
+		},
+		"./24/outline/*.svelte": {
+			"types": "./dist/24/outline/*.svelte.d.ts",
+			"svelte": "./dist/24/outline/*.svelte",
+			"default": "./dist/24/outline/*.svelte"
+		},
 		"./24/solid": {
 			"types": "./dist/24/solid/index.d.ts",
 			"svelte": "./dist/24/solid/index.js",
 			"default": "./dist/24/solid/index.js"
+		},
+		"./24/solid/*": {
+			"types": "./dist/24/solid/*.svelte.d.ts",
+			"svelte": "./dist/24/solid/*.svelte",
+			"default": "./dist/24/solid/*.svelte"
+		},
+		"./24/solid/*.svelte": {
+			"types": "./dist/24/solid/*.svelte.d.ts",
+			"svelte": "./dist/24/solid/*.svelte",
+			"default": "./dist/24/solid/*.svelte"
 		}
 	},
 	"files": [
 		"dist"
 	],
-	"svelte": "./dist/index.js",
-	"types": "./dist/index.d.ts",
 	"typesVersions": {
 		">4.0": {
 			"20/solid": [
 				"./dist/20/solid/index.d.ts"
 			],
+			"20/solid/*": [
+				"./dist/20/solid/*.svelte.d.ts"
+			],
+			"20/solid/*.svelte": [
+				"./dist/20/solid/*.svelte.d.ts"
+			],
 			"24/outline": [
 				"./dist/24/outline/index.d.ts"
 			],
+			"24/outline/*": [
+				"./dist/24/outline/*.svelte.d.ts"
+			],
+			"24/outline/*.svelte": [
+				"./dist/24/outline/*.svelte.d.ts"
+			],
 			"24/solid": [
 				"./dist/24/solid/index.d.ts"
+			],
+			"24/solid/*": [
+				"./dist/24/solid/*.svelte.d.ts"
+			],
+			"24/solid/*.svelte": [
+				"./dist/24/solid/*.svelte.d.ts"
 			]
 		}
 	}
