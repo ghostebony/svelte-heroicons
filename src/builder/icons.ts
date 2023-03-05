@@ -1,10 +1,8 @@
 import {
 	appendFileSync,
-	closeSync,
 	existsSync,
 	lstatSync,
 	mkdirSync,
-	openSync,
 	readdirSync,
 	readFileSync,
 	rmSync,
@@ -22,7 +20,6 @@ const TEMPLATE_PATH = "./src/templates";
 const ICON_SOLID_TEMPLATE = readFileSync(TEMPLATE_PATH + "/IconSolid.tpl", "utf-8");
 const ICON_OUTLINE_TEMPLATE = readFileSync(TEMPLATE_PATH + "/IconOutline.tpl", "utf-8");
 const ICON_EXPORT_TEMPLATE = readFileSync(TEMPLATE_PATH + "/IconExport.tpl", "utf-8");
-const ICON_EXPORTS_TEMPLATE = readFileSync(TEMPLATE_PATH + "/IconExports.tpl", "utf-8");
 
 const SVG_SOLID = {
 	regex: /<svg (.*?) fill="currentColor" aria-hidden="true">/,
@@ -36,13 +33,6 @@ const SVG_OUTLINE = {
 };
 
 existsSync(DEST_HEROICONS_PATH) && rmSync(DEST_HEROICONS_PATH, { recursive: true });
-
-const indexFile = join(DEST_HEROICONS_PATH, "index.js");
-
-if (!existsSync(indexFile)) {
-	mkdirSync(DEST_HEROICONS_PATH);
-	closeSync(openSync(indexFile, "w"));
-}
 
 function builder(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
 	!existsSync(to) && mkdirSync(to);
@@ -61,16 +51,8 @@ function builder(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
 					.join("")
 					.replace(".svg", "");
 
-				const compFileName = `${compName}.svelte`;
-
-				const compFolderName = fileOrFolder.replace(".svg", "");
-
-				const compFolderPath = join(to, compFolderName);
-
-				!existsSync(compFolderPath) && mkdirSync(compFolderPath);
-
 				writeFileSync(
-					join(compFolderPath, compFileName),
+					join(to, `${compName}.svelte`),
 					ICON_TEMPLATE.replace(
 						"%svg%",
 						readFileSync(join(from, fileOrFolder), "utf-8").replace(
@@ -81,22 +63,9 @@ function builder(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
 					"utf-8"
 				);
 
-				writeFileSync(
-					join(compFolderPath, "index.ts"),
-					ICON_EXPORT_TEMPLATE.replace("%componentName%", compFileName),
-					"utf-8"
-				);
-
 				appendFileSync(
 					join(to, "index.ts"),
-					ICON_EXPORTS_TEMPLATE.replace(
-						/%(.*?)%/g,
-						(_, tplv: "componentName" | "componentFolderName") =>
-							({
-								componentName: compName,
-								componentFolderName: compFolderName,
-							}[tplv])
-					),
+					ICON_EXPORT_TEMPLATE.replaceAll("%componentName%", compName),
 					"utf-8"
 				);
 			} else {

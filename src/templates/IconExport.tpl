@@ -1,1 +1,1 @@
-export { default } from "./%componentName%";
+export { default as %componentName%Icon } from "./%componentName%.svelte";
