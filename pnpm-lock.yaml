@@ -29,8 +29,8 @@ devDependencies:
     specifier: ^4.0.0
     version: 4.0.0(eslint@8.36.0)(svelte@3.57.0)
   heroicons:
-    specifier: 2.0.16
-    version: 2.0.16
+    specifier: 2.0.18
+    version: 2.0.18
   prettier:
     specifier: ^2.8.7
     version: 2.8.7
@@ -1156,8 +1156,8 @@ packages:
       function-bind: 1.1.1
     dev: true
 
-  /heroicons@2.0.16:
-    resolution: {integrity: sha512-UhFYoJkROAS61zSRHDsLu1DEsfT1wn5gMR2AXRJSKGcwGdPovY2BsAOO763uXq/MCNVLzSpcpniNU24T/vwqUQ==}
+  /heroicons@2.0.18:
+    resolution: {integrity: sha512-3iaqznaz5GJ8Mox/eDfKHo7tYKuPiZV4vbg6pB6wjJhBa7ZKQlXT1KuUnsjkEiPy/ezyiqppOX6wUqYguMIq8w==}
     dev: true
 
   /ignore-walk@5.0.1:
