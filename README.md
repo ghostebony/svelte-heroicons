@@ -63,16 +63,20 @@ pnpm add -D @ghostebony/svelte-heroicons
 
 ### Outline
 
-| Property    | Type     | Default          |
-| :---------- | :------- | :--------------- |
-| stroke      | `string` | `"currentColor"` |
-| strokeWidth | `number` | `1.5 `           |
+| Property    | Type               | Default          |
+| :---------- | :----------------- | :--------------- |
+| stroke      | `string`           | `"currentColor"` |
+| strokeWidth | `number`           | `1.5 `           |
+| height      | `number \| string` | `undefined`      |
+| width       | `number \| string` | `undefined`      |
 
 ### Solid
 
-| Property | Type     | Default          |
-| :------- | :------- | :--------------- |
-| fill     | `string` | `"currentColor"` |
+| Property | Type               | Default          |
+| :------- | :----------------- | :--------------- |
+| fill     | `string`           | `"currentColor"` |
+| height   | `number \| string` | `undefined`      |
+| width    | `number \| string` | `undefined`      |
 
 ## License
 
