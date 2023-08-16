@@ -57,16 +57,16 @@ function builder(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
 						"%svg%",
 						readFileSync(join(from, fileOrFolder), "utf-8").replace(
 							SVG.regex,
-							SVG.replacer
-						)
+							SVG.replacer,
+						),
 					),
-					"utf-8"
+					"utf-8",
 				);
 
 				appendFileSync(
 					join(to, "index.ts"),
 					ICON_EXPORT_TEMPLATE.replaceAll("%componentName%", compName),
-					"utf-8"
+					"utf-8",
 				);
 			} else {
 				builder(join(from, fileOrFolder), join(to, fileOrFolder));

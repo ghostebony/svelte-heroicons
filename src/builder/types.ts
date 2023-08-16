@@ -13,9 +13,9 @@ function builder(path: string = SRC_PACKAGE_PATH) {
 					fileOrFolderPath,
 					readFileSync(fileOrFolderPath, "utf-8").replace(
 						"[x: string]: any;",
-						"[x: string]: any;\n        class?: string | undefined;"
+						"[x: string]: any;\n        class?: string | undefined;",
 					),
-					"utf-8"
+					"utf-8",
 				);
 			}
 		} else {
