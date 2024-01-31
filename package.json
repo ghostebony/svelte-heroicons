@@ -32,10 +32,15 @@
 		"pnpm": ">=7"
 	},
 	"peerDependencies": {
+		"heroicons": "2.1.1",
 		"svelte": "^3.54.0 || ^4.0.0"
 	},
+	"peerDependenciesMeta": {
+		"heroicons": {
+			"optional": true
+		}
+	},
 	"devDependencies": {
-		"heroicons": "2.0.18",
 		"@sveltejs/adapter-auto": "^3.1.1",
 		"@sveltejs/kit": "^2.5.0",
 		"@sveltejs/package": "^2.2.6",
