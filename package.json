@@ -35,7 +35,7 @@
 		"svelte": "^3.54.0 || ^4.0.0"
 	},
 	"devDependencies": {
-		"heroicons": "2.0.18",
+		"heroicons": "2.1.1",
 		"@sveltejs/adapter-auto": "^3.1.1",
 		"@sveltejs/kit": "^2.5.0",
 		"@sveltejs/package": "^2.2.6",
