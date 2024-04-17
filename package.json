@@ -62,6 +62,21 @@
 		"vite": "^5.0.12"
 	},
 	"exports": {
+		"./16/solid": {
+			"types": "./dist/16/solid/index.d.ts",
+			"svelte": "./dist/16/solid/index.js",
+			"default": "./dist/16/solid/index.js"
+		},
+		"./16/solid/*": {
+			"types": "./dist/16/solid/*.svelte.d.ts",
+			"svelte": "./dist/16/solid/*.svelte",
+			"default": "./dist/16/solid/*.svelte"
+		},
+		"./16/solid/*.svelte": {
+			"types": "./dist/16/solid/*.svelte.d.ts",
+			"svelte": "./dist/16/solid/*.svelte",
+			"default": "./dist/16/solid/*.svelte"
+		},
 		"./20/solid": {
 			"types": "./dist/20/solid/index.d.ts",
 			"svelte": "./dist/20/solid/index.js",
@@ -113,6 +128,15 @@
 	],
 	"typesVersions": {
 		">4.0": {
+			"16/solid": [
+				"./dist/16/solid/index.d.ts"
+			],
+			"16/solid/*": [
+				"./dist/16/solid/*.svelte.d.ts"
+			],
+			"16/solid/*.svelte": [
+				"./dist/16/solid/*.svelte.d.ts"
+			],
 			"20/solid": [
 				"./dist/20/solid/index.d.ts"
 			],
