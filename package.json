@@ -32,7 +32,7 @@
 		"pnpm": ">=7"
 	},
 	"peerDependencies": {
-		"heroicons": "2.1.1",
+		"heroicons": "2.1.5",
 		"svelte": "^3.54.0 || ^4.0.0"
 	},
 	"peerDependenciesMeta": {
@@ -41,25 +41,25 @@
 		}
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.1.1",
-		"@sveltejs/kit": "^2.5.0",
-		"@sveltejs/package": "^2.2.6",
-		"@sveltejs/vite-plugin-svelte": "^3.0.2",
-		"@types/node": "^20.11.13",
-		"@typescript-eslint/eslint-plugin": "^6.20.0",
-		"@typescript-eslint/parser": "^6.20.0",
-		"eslint": "^8.56.0",
-		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-svelte": "^2.35.1",
-		"prettier": "^3.2.4",
-		"prettier-plugin-svelte": "^3.1.2",
-		"publint": "^0.2.7",
-		"svelte": "^4.2.9",
-		"svelte-check": "^3.6.3",
+		"@sveltejs/adapter-auto": "^3.2.2",
+		"@sveltejs/kit": "^2.5.18",
+		"@sveltejs/package": "^2.3.2",
+		"@sveltejs/vite-plugin-svelte": "^3.1.1",
+		"@types/node": "^20.14.10",
+		"@typescript-eslint/eslint-plugin": "^6.21.0",
+		"@typescript-eslint/parser": "^6.21.0",
+		"eslint": "^8.57.0",
+		"eslint-config-prettier": "^8.10.0",
+		"eslint-plugin-svelte": "^2.42.0",
+		"prettier": "^3.3.3",
+		"prettier-plugin-svelte": "^3.2.5",
+		"publint": "^0.2.8",
+		"svelte": "^4.2.18",
+		"svelte-check": "^3.8.4",
 		"ts-node": "^10.9.2",
-		"tslib": "^2.6.2",
-		"typescript": "^5.3.3",
-		"vite": "^5.0.12"
+		"tslib": "^2.6.3",
+		"typescript": "^5.5.3",
+		"vite": "^5.3.3"
 	},
 	"exports": {
 		"./16/solid": {
