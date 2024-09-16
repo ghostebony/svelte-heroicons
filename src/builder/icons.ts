@@ -24,12 +24,12 @@ const ICON_EXPORT_TEMPLATE = readFileSync(TEMPLATE_PATH + "/IconExport.tpl", "ut
 const SVG_SOLID = {
 	regex: /<svg (.*?) fill="currentColor" aria-hidden="true" data-slot="icon">/,
 	replacer: (_: unknown, attr: string) =>
-		`<svg ${attr} {fill} {height} {width} aria-hidden="true" data-slot="icon" class={$$$props.class}>`,
+		`<svg ${attr} {fill} {height} {width} aria-hidden="true" {...$$$restProps}>`,
 };
 const SVG_OUTLINE = {
 	regex: /<svg (.*?) stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">/,
 	replacer: (_: unknown, attr: string) =>
-		`<svg ${attr} stroke-width={strokeWidth} {stroke} {height} {width} aria-hidden="true" data-slot="icon" class={$$$props.class}>`,
+		`<svg ${attr} stroke-width={strokeWidth} {stroke} {height} {width} aria-hidden="true" {...$$$restProps}>`,
 };
 
 existsSync(DEST_HEROICONS_PATH) && rmSync(DEST_HEROICONS_PATH, { recursive: true });
