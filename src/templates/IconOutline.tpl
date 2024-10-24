@@ -14,7 +14,7 @@
 	}
 
 	let {
-		stroke = "currentColor",
+		stroke = 'currentColor',
 		strokeWidth = 1.5,
 		height = undefined,
 		width = undefined,

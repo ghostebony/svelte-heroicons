@@ -30,8 +30,8 @@ pnpm add -D @ghostebony/svelte-heroicons
 
 ```svelte
 <script>
-	// import { AcademicCapIcon } from "@ghostebony/svelte-heroicons/24/outline";
-	import AcademicCapIcon from "@ghostebony/svelte-heroicons/24/outline/AcademicCap";
+	// import { AcademicCapIcon } from '@ghostebony/svelte-heroicons/24/outline';
+	import AcademicCapIcon from '@ghostebony/svelte-heroicons/24/outline/AcademicCap';
 </script>
 
 <AcademicCapIcon />
@@ -41,8 +41,8 @@ pnpm add -D @ghostebony/svelte-heroicons
 
 ```svelte
 <script>
-	// import { AcademicCapIcon } from "@ghostebony/svelte-heroicons/24/solid";
-	import AcademicCapIcon from "@ghostebony/svelte-heroicons/24/solid/AcademicCap";
+	// import { AcademicCapIcon } from '@ghostebony/svelte-heroicons/24/solid';
+	import AcademicCapIcon from '@ghostebony/svelte-heroicons/24/solid/AcademicCap';
 </script>
 
 <AcademicCapIcon />
@@ -52,8 +52,8 @@ pnpm add -D @ghostebony/svelte-heroicons
 
 ```svelte
 <script>
-	// import { AcademicCapIcon } from "@ghostebony/svelte-heroicons/20/solid";
-	import AcademicCapIcon from "@ghostebony/svelte-heroicons/20/solid/AcademicCap";
+	// import { AcademicCapIcon } from '@ghostebony/svelte-heroicons/20/solid';
+	import AcademicCapIcon from '@ghostebony/svelte-heroicons/20/solid/AcademicCap';
 </script>
 
 <AcademicCapIcon />

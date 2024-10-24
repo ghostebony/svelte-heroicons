@@ -9,7 +9,7 @@
 		class?: string;
 	}
 
-	let { fill = "currentColor", height = undefined, width = undefined, ...rest }: Props = $props();
+	let { fill = 'currentColor', height = undefined, width = undefined, ...rest }: Props = $props();
 </script>
 
 %svg%

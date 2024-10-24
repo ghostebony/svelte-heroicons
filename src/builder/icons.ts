@@ -7,19 +7,19 @@ import {
 	readFileSync,
 	rmSync,
 	writeFileSync,
-} from "fs";
-import { join } from "path";
+} from 'fs';
+import { join } from 'path';
 
-const IGNORE_FILES_OR_FOLDERS = ["LICENSE", "package.json", "README.md"];
+const IGNORE_FILES_OR_FOLDERS = ['LICENSE', 'package.json', 'README.md'];
 
-const SRC_HEROICONS_PATH = "./node_modules/heroicons";
-const DEST_HEROICONS_PATH = "./src/lib";
+const SRC_HEROICONS_PATH = './node_modules/heroicons';
+const DEST_HEROICONS_PATH = './src/lib';
 
-const TEMPLATE_PATH = "./src/templates";
+const TEMPLATE_PATH = './src/templates';
 
-const ICON_SOLID_TEMPLATE = readFileSync(TEMPLATE_PATH + "/IconSolid.tpl", "utf-8");
-const ICON_OUTLINE_TEMPLATE = readFileSync(TEMPLATE_PATH + "/IconOutline.tpl", "utf-8");
-const ICON_EXPORT_TEMPLATE = readFileSync(TEMPLATE_PATH + "/IconExport.tpl", "utf-8");
+const ICON_SOLID_TEMPLATE = readFileSync(TEMPLATE_PATH + '/IconSolid.tpl', 'utf-8');
+const ICON_OUTLINE_TEMPLATE = readFileSync(TEMPLATE_PATH + '/IconOutline.tpl', 'utf-8');
+const ICON_EXPORT_TEMPLATE = readFileSync(TEMPLATE_PATH + '/IconExport.tpl', 'utf-8');
 
 const SVG_SOLID = {
 	regex: /<svg (.*?) fill="currentColor" aria-hidden="true" data-slot="icon">/,
@@ -41,7 +41,7 @@ function builder(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
 		mkdirSync(to);
 	}
 
-	const isSolid = to.includes("solid");
+	const isSolid = to.includes('solid');
 
 	const SVG = isSolid ? SVG_SOLID : SVG_OUTLINE;
 	const ICON_TEMPLATE = isSolid ? ICON_SOLID_TEMPLATE : ICON_OUTLINE_TEMPLATE;
@@ -50,27 +50,27 @@ function builder(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
 		if (!IGNORE_FILES_OR_FOLDERS.includes(fileOrFolder)) {
 			if (lstatSync(join(from, fileOrFolder)).isFile()) {
 				const compName = fileOrFolder
-					.split("-")
+					.split('-')
 					.map((n) => n.replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase()))
-					.join("")
-					.replace(".svg", "");
+					.join('')
+					.replace('.svg', '');
 
 				writeFileSync(
 					join(to, `${compName}.svelte`),
 					ICON_TEMPLATE.replace(
-						"%svg%",
-						readFileSync(join(from, fileOrFolder), "utf-8").replace(
+						'%svg%',
+						readFileSync(join(from, fileOrFolder), 'utf-8').replace(
 							SVG.regex,
 							SVG.replacer,
 						),
 					),
-					"utf-8",
+					'utf-8',
 				);
 
 				appendFileSync(
-					join(to, "index.ts"),
-					ICON_EXPORT_TEMPLATE.replaceAll("%componentName%", compName),
-					"utf-8",
+					join(to, 'index.ts'),
+					ICON_EXPORT_TEMPLATE.replaceAll('%componentName%', compName),
+					'utf-8',
 				);
 			} else {
 				builder(join(from, fileOrFolder), join(to, fileOrFolder));
