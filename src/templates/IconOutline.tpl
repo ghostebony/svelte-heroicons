@@ -1,5 +1,5 @@
 <script lang="ts">
-	interface $$Props {
+	interface Props {
 		/**
 		 * @default "currentColor"
 		 */
@@ -13,19 +13,13 @@
 		class?: string;
 	}
 
-	/**
-	 * @default "currentColor"
-	 */
-	export let stroke = "currentColor";
-
-	/**
-	 * @default 1.5
-	 */
-	export let strokeWidth = 1.5;
-
-	export let height: string | number | undefined = undefined;
-
-	export let width: string | number | undefined = undefined;
+	let {
+		stroke = "currentColor",
+		strokeWidth = 1.5,
+		height = undefined,
+		width = undefined,
+		...rest
+	}: Props = $props();
 </script>
 
 %svg%

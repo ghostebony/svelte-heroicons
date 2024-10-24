@@ -17,14 +17,14 @@
 		"dev": "vite dev",
 		"build": "vite build && pnpm package",
 		"preview": "vite preview",
-		"build:icons": "node --loader ts-node/esm ./src/builder/icons.ts",
+		"build:icons": "tsx ./src/builder/icons.ts",
 		"build:package": "svelte-package",
 		"package": "svelte-kit sync && pnpm build:icons && pnpm build:package && publint",
 		"prepublishOnly": "pnpm package",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --plugin=prettier-plugin-svelte --check . && eslint .",
-		"format": "prettier --plugin=prettier-plugin-svelte --write ."
+		"lint": "eslint . && prettier --check .",
+		"format": "prettier --write ."
 	},
 	"packageManager": "pnpm@9.1.0",
 	"engines": {
@@ -32,7 +32,7 @@
 	},
 	"peerDependencies": {
 		"heroicons": "2.1.5",
-		"svelte": "^3.54.0 || ^4.0.0"
+		"svelte": "^5.0.0"
 	},
 	"peerDependenciesMeta": {
 		"heroicons": {
@@ -40,26 +40,28 @@
 		}
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.2.4",
-		"@sveltejs/kit": "^2.5.27",
-		"@sveltejs/package": "^2.3.5",
-		"@sveltejs/vite-plugin-svelte": "^3.1.2",
-		"@types/node": "^20.16.5",
-		"@typescript-eslint/eslint-plugin": "^6.21.0",
-		"@typescript-eslint/parser": "^6.21.0",
-		"eslint": "^8.57.0",
-		"eslint-config-prettier": "^8.10.0",
-		"eslint-plugin-svelte": "^2.44.0",
+		"@sveltejs/adapter-auto": "^3.3.0",
+		"@sveltejs/kit": "^2.7.2",
+		"@sveltejs/package": "^2.3.6",
+		"@sveltejs/vite-plugin-svelte": "^4.0.0",
+		"@types/node": "^22.7.9",
+		"eslint": "^9.13.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-svelte": "^2.46.0",
+		"globals": "^15.11.0",
 		"prettier": "^3.3.3",
-		"prettier-plugin-svelte": "^3.2.6",
-		"publint": "^0.2.10",
-		"svelte": "^4.2.19",
-		"svelte-check": "^4.0.2",
-		"ts-node": "^10.9.2",
-		"tslib": "^2.7.0",
-		"typescript": "^5.6.2",
-		"vite": "^5.4.5"
+		"prettier-plugin-svelte": "^3.2.7",
+		"publint": "^0.2.12",
+		"svelte": "^5.1.1",
+		"svelte-check": "^4.0.5",
+		"tsx": "^4.19.1",
+		"typescript": "^5.6.3",
+		"typescript-eslint": "^8.11.0",
+		"vite": "^5.4.10"
 	},
+	"files": [
+		"dist"
+	],
 	"exports": {
 		"./16/solid": {
 			"types": "./dist/16/solid/index.d.ts",
@@ -122,9 +124,6 @@
 			"default": "./dist/24/solid/*.svelte"
 		}
 	},
-	"files": [
-		"dist"
-	],
 	"typesVersions": {
 		">4.0": {
 			"16/solid": [

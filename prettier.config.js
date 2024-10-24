@@ -8,5 +8,8 @@ export default {
 	bracketSpacing: true,
 	bracketSameLine: false,
 	plugins: ["prettier-plugin-svelte"],
-	overrides: [{ files: "*.svelte", options: { parser: "svelte" } }],
+	overrides: [
+		{ files: "*.svelte", options: { parser: "svelte" } },
+		{ files: "*.tpl", options: { parser: "svelte" } },
+	],
 };

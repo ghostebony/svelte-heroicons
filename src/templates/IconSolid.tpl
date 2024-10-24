@@ -1,5 +1,5 @@
 <script lang="ts">
-	interface $$Props {
+	interface Props {
 		/**
 		 * @default "currentColor"
 		 */
@@ -9,14 +9,7 @@
 		class?: string;
 	}
 
-	/**
-	 * @default "currentColor"
-	 */
-	export let fill = "currentColor";
-
-	export let height: string | number | undefined = undefined;
-
-	export let width: string | number | undefined = undefined;
+	let { fill = "currentColor", height = undefined, width = undefined, ...rest }: Props = $props();
 </script>
 
 %svg%
