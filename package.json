@@ -19,7 +19,7 @@
 		"preview": "vite preview",
 		"build:icons": "tsx ./src/builder/icons.ts",
 		"build:package": "svelte-package",
-		"package": "svelte-kit sync && pnpm build:icons && pnpm build:package && publint",
+		"package": "pnpm build:icons && svelte-kit sync && pnpm build:package && publint",
 		"prepublishOnly": "pnpm package",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
