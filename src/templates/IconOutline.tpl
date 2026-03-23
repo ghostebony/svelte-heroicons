@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type { ClassValue } from 'svelte/elements';
+
 	interface Props {
 		/**
 		 * @default "currentColor"
@@ -10,7 +12,7 @@
 		strokeWidth?: number;
 		height?: string | number;
 		width?: string | number;
-		class?: string;
+		class?: ClassValue;
 	}
 
 	let {
