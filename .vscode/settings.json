@@ -1,0 +1,6 @@
+{
+	"files.watcherExclude": {
+		"dist": true,
+		"src/lib": true
+	}
+}
