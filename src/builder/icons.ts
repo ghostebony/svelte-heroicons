@@ -44,38 +44,40 @@ function builder(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
 	const isSolid = to.includes('solid');
 
 	const SVG = isSolid ? SVG_SOLID : SVG_OUTLINE;
+
 	const ICON_TEMPLATE = isSolid ? ICON_SOLID_TEMPLATE : ICON_OUTLINE_TEMPLATE;
 
 	for (const fileOrFolder of readdirSync(from)) {
-		if (!IGNORE_FILES_OR_FOLDERS.includes(fileOrFolder)) {
-			if (lstatSync(join(from, fileOrFolder)).isFile()) {
-				const compName = fileOrFolder
-					.split('-')
-					.map((n) => n.replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase()))
-					.join('')
-					.replace('.svg', '');
-
-				writeFileSync(
-					join(to, `${compName}.svelte`),
-					ICON_TEMPLATE.replace(
-						'%svg%',
-						readFileSync(join(from, fileOrFolder), 'utf-8').replace(
-							SVG.regex,
-							SVG.replacer,
-						),
-					),
-					'utf-8',
-				);
-
-				appendFileSync(
-					join(to, 'index.ts'),
-					ICON_EXPORT_TEMPLATE.replaceAll('%componentName%', compName),
-					'utf-8',
-				);
-			} else {
-				builder(join(from, fileOrFolder), join(to, fileOrFolder));
-			}
+		if (IGNORE_FILES_OR_FOLDERS.includes(fileOrFolder)) {
+			continue;
 		}
+
+		if (!lstatSync(join(from, fileOrFolder)).isFile()) {
+			builder(join(from, fileOrFolder), join(to, fileOrFolder));
+
+			continue;
+		}
+
+		const compName = fileOrFolder
+			.split('-')
+			.map((n) => n.replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase()))
+			.join('')
+			.replace('.svg', '');
+
+		writeFileSync(
+			join(to, `${compName}.svelte`),
+			ICON_TEMPLATE.replace(
+				'%svg%',
+				readFileSync(join(from, fileOrFolder), 'utf-8').replace(SVG.regex, SVG.replacer),
+			),
+			'utf-8',
+		);
+
+		appendFileSync(
+			join(to, 'index.ts'),
+			ICON_EXPORT_TEMPLATE.replaceAll('%componentName%', compName),
+			'utf-8',
+		);
 	}
 }
 
