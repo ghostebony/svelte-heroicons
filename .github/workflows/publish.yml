@@ -50,11 +50,11 @@ jobs:
         if: steps.icons-cache.outputs.cache-hit != 'true'
         run: pnpm tsx ./scripts/build.ts
 
-      # - name: Check code
-      #   run: pnpm check
+      - name: Check code
+        run: pnpm check
 
-      # - name: Lint code
-      #   run: pnpm lint
+      - name: Lint code
+        run: pnpm lint
 
       - name: Cache prepack
         id: prepack-cache
