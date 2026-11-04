@@ -1,5 +1,5 @@
-/** @type {import("prettier").Options} */
-export default {
+/** @type {import("prettier").Config} */
+const config = {
 	useTabs: true,
 	singleQuote: true,
 	printWidth: 100,
@@ -13,3 +13,5 @@ export default {
 		{ files: '*.tpl', options: { parser: 'svelte' } },
 	],
 };
+
+export default config;
