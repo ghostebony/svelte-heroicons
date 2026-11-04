@@ -5,7 +5,7 @@ import {
 	mkdirSync,
 	readdirSync,
 	readFileSync,
-	writeFileSync,
+	writeFileSync
 } from 'fs';
 import { join } from 'path';
 import { IGNORE_FILES_OR_FOLDERS, TEMPLATE_PATH } from './constants';
@@ -17,12 +17,12 @@ const ICON_EXPORT_TEMPLATE = readFileSync(TEMPLATE_PATH + '/IconExport.tpl', 'ut
 const SVG_SOLID = {
 	regex: /<svg (.*?) fill="currentColor" aria-hidden="true" data-slot="icon">/,
 	replacer: (_: unknown, attr: string) =>
-		`<svg ${attr} {fill} {height} {width} aria-hidden="true" {...rest}>`,
+		`<svg ${attr} {fill} {height} {width} aria-hidden="true" {...rest}>`
 };
 const SVG_OUTLINE = {
 	regex: /<svg (.*?) stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">/,
 	replacer: (_: unknown, attr: string) =>
-		`<svg ${attr} stroke-width={strokeWidth} {stroke} {height} {width} aria-hidden="true" {...rest}>`,
+		`<svg ${attr} stroke-width={strokeWidth} {stroke} {height} {width} aria-hidden="true" {...rest}>`
 };
 
 export function builder(from: string, to: string) {
@@ -55,15 +55,15 @@ export function builder(from: string, to: string) {
 			join(to, `${compName}.svelte`),
 			ICON_TEMPLATE.replace(
 				'%svg%',
-				readFileSync(join(from, fileOrFolder), 'utf-8').replace(SVG.regex, SVG.replacer),
+				readFileSync(join(from, fileOrFolder), 'utf-8').replace(SVG.regex, SVG.replacer)
 			),
-			'utf-8',
+			'utf-8'
 		);
 
 		appendFileSync(
 			join(to, 'index.ts'),
 			ICON_EXPORT_TEMPLATE.replaceAll('%componentName%', compName),
-			'utf-8',
+			'utf-8'
 		);
 	}
 }

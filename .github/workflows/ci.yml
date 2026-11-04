@@ -1,79 +1,79 @@
 name: CI
 
 on:
-    push:
-        branches: [main]
-        tags-ignore: ['v*']
-    pull_request:
+  push:
+    branches: [main]
+    tags-ignore: ['v*']
+  pull_request:
 
 env:
-    NODE_VERSION: 26
-    PNPM_VERSION: 12
+  NODE_VERSION: 26
+  PNPM_VERSION: 12
 
 jobs:
-    check:
-        runs-on: ubuntu-latest
+  check:
+    runs-on: ubuntu-latest
 
-        permissions:
-            contents: read
+    permissions:
+      contents: read
 
-        steps:
-            - &checkout
-              name: Checkout Repository
-              uses: actions/checkout@v7
+    steps:
+      - &checkout
+        name: Checkout Repository
+        uses: actions/checkout@v7
 
-            - &setup_pnpm
-              name: Setup pnpm
-              uses: pnpm/action-setup@v6
-              with:
-                  version: ${{ env.PNPM_VERSION }}
+      - &setup_pnpm
+        name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: ${{ env.PNPM_VERSION }}
 
-            - &setup_node
-              name: Setup Node.js
-              uses: actions/setup-node@v7
-              with:
-                  node-version: ${{ env.NODE_VERSION }}
-                  cache: pnpm
+      - &setup_node
+        name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
 
-            - &install
-              name: Install dependencies
-              run: pnpm install --frozen-lockfile
+      - &install
+        name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-            - &icons_cache
-              name: Icons cache
-              id: icons-cache
-              uses: actions/cache@v6
-              with:
-                path: src/lib
-                key: ${{ runner.os }}-icons-${{ hashFiles('scripts/**/*') }}
-                restore-keys: ${{ runner.os }}-icons-
+      - &icons_cache
+        name: Icons cache
+        id: icons-cache
+        uses: actions/cache@v6
+        with:
+          path: src/lib
+          key: ${{ runner.os }}-icons-${{ hashFiles('scripts/**/*') }}
+          restore-keys: ${{ runner.os }}-icons-
 
-            - &build_icons
-              name: Build icons
-              if: steps.icons-cache.outputs.cache-hit != 'true'
-              run: pnpm tsx ./scripts/build.ts
+      - &build_icons
+        name: Build icons
+        if: steps.icons-cache.outputs.cache-hit != 'true'
+        run: pnpm tsx ./scripts/build.ts
 
-            - name: Check code
-              run: pnpm check
+      - name: Check code
+        run: pnpm check
 
-    lint:
-        runs-on: ubuntu-latest
+  lint:
+    runs-on: ubuntu-latest
 
-        permissions:
-            contents: read
+    permissions:
+      contents: read
 
-        steps:
-            - *checkout
+    steps:
+      - *checkout
 
-            - *setup_pnpm
+      - *setup_pnpm
 
-            - *setup_node
+      - *setup_node
 
-            - *install
+      - *install
 
-            - *icons_cache
+      - *icons_cache
 
-            - *build_icons
+      - *build_icons
 
-            - name: Lint code
-              run: pnpm lint
+      - name: Lint code
+        run: pnpm lint

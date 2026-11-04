@@ -2,16 +2,13 @@
 const config = {
 	useTabs: true,
 	singleQuote: true,
+	trailingComma: 'none',
 	printWidth: 100,
-	tabWidth: 4,
-	arrowParens: 'always',
-	bracketSpacing: true,
-	bracketSameLine: false,
 	plugins: ['prettier-plugin-svelte'],
 	overrides: [
 		{ files: '*.svelte', options: { parser: 'svelte' } },
-		{ files: '*.tpl', options: { parser: 'svelte' } },
-	],
+		{ files: '*.tpl', options: { parser: 'svelte' } }
+	]
 };
 
 export default config;
