@@ -52,7 +52,7 @@ jobs:
       - &install_build_deps
         name: Install build dependencies
         if: steps.icons-cache.outputs.cache-hit != 'true'
-        run: pnpm add -D --no-save heroicons@${{ env.HEROICONS_VERSION }} tsx@${{ env.TSX_VERSION }}
+        run: pnpm add -D --no-save-dev heroicons@${{ env.HEROICONS_VERSION }} tsx@${{ env.TSX_VERSION }}
 
       - &build_icons
         name: Build icons
