@@ -12,7 +12,6 @@ import { IGNORE_FILES_OR_FOLDERS, TEMPLATE_PATH } from './constants';
 
 const ICON_SOLID_TEMPLATE = readFileSync(TEMPLATE_PATH + '/IconSolid.tpl', 'utf-8');
 const ICON_OUTLINE_TEMPLATE = readFileSync(TEMPLATE_PATH + '/IconOutline.tpl', 'utf-8');
-const ICON_EXPORT_TEMPLATE = readFileSync(TEMPLATE_PATH + '/IconExport.tpl', 'utf-8');
 
 const SVG_SOLID = {
 	regex: /<svg (.*?) fill="currentColor" aria-hidden="true" data-slot="icon">/,
@@ -57,12 +56,6 @@ export function builder(from: string, to: string) {
 				'%svg%',
 				readFileSync(join(from, fileOrFolder), 'utf-8').replace(SVG.regex, SVG.replacer)
 			),
-			'utf-8'
-		);
-
-		appendFileSync(
-			join(to, 'index.ts'),
-			ICON_EXPORT_TEMPLATE.replaceAll('%componentName%', compName),
 			'utf-8'
 		);
 	}
