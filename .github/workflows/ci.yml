@@ -1,59 +1,79 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - main
-    tags-ignore:
-      - "v*"
-  pull_request:
+    push:
+        branches: [main]
+        tags-ignore: ['v*']
+    pull_request:
+
+env:
+    NODE_VERSION: 26
+    PNPM_VERSION: 12
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+    check:
+        runs-on: ubuntu-latest
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        permissions:
+            contents: read
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: latest
-          cache: pnpm
+        steps:
+            - &checkout
+              name: Checkout Repository
+              uses: actions/checkout@v7
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+            - &setup_pnpm
+              name: Setup pnpm
+              uses: pnpm/action-setup@v6
+              with:
+                  version: ${{ env.PNPM_VERSION }}
 
-      - name: Lint code
-        run: pnpm lint
+            - &setup_node
+              name: Setup Node.js
+              uses: actions/setup-node@v7
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+                  cache: pnpm
 
-  check:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+            - &install
+              name: Install dependencies
+              run: pnpm install --frozen-lockfile
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+            - &icons_cache
+              name: Icons cache
+              id: icons-cache
+              uses: actions/cache@v6
+              with:
+                path: src/lib
+                key: ${{ runner.os }}-icons-${{ hashFiles('scripts/**/*') }}
+                restore-keys: ${{ runner.os }}-icons-
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: latest
-          cache: pnpm
+            - &build_icons
+              name: Build icons
+              if: steps.icons-cache.outputs.cache-hit != 'true'
+              run: pnpm tsx ./scripts/build.ts
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+            - name: Check code
+              run: pnpm check
 
-      - name: svelte-kit sync
-        run: pnpm svelte-kit sync
+    lint:
+        runs-on: ubuntu-latest
 
-      - name: Build icons
-        run: pnpm build:icons
+        permissions:
+            contents: read
 
-      - name: Check code
-        run: pnpm check
+        steps:
+            - *checkout
+
+            - *setup_pnpm
+
+            - *setup_node
+
+            - *install
+
+            - *icons_cache
+
+            - *build_icons
+
+            - name: Lint code
+              run: pnpm lint
