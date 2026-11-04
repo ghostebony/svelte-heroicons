@@ -15,4 +15,4 @@ yarn.lock
 /.github
 /src/lib
 
-/src/templates/IconExport.tpl
+/scripts/templates/IconExport.tpl

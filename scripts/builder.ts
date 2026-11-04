@@ -5,17 +5,10 @@ import {
 	mkdirSync,
 	readdirSync,
 	readFileSync,
-	rmSync,
 	writeFileSync,
 } from 'fs';
 import { join } from 'path';
-
-const IGNORE_FILES_OR_FOLDERS = ['LICENSE', 'package.json', 'README.md'];
-
-const SRC_HEROICONS_PATH = './node_modules/heroicons';
-const DEST_HEROICONS_PATH = './src/lib';
-
-const TEMPLATE_PATH = './src/templates';
+import { IGNORE_FILES_OR_FOLDERS, TEMPLATE_PATH } from './constants';
 
 const ICON_SOLID_TEMPLATE = readFileSync(TEMPLATE_PATH + '/IconSolid.tpl', 'utf-8');
 const ICON_OUTLINE_TEMPLATE = readFileSync(TEMPLATE_PATH + '/IconOutline.tpl', 'utf-8');
@@ -32,20 +25,14 @@ const SVG_OUTLINE = {
 		`<svg ${attr} stroke-width={strokeWidth} {stroke} {height} {width} aria-hidden="true" {...rest}>`,
 };
 
-if (existsSync(DEST_HEROICONS_PATH)) {
-	rmSync(DEST_HEROICONS_PATH, { recursive: true });
-}
-
-function builder(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
+export function builder(from: string, to: string) {
 	if (!existsSync(to)) {
-		mkdirSync(to);
+		mkdirSync(to, { recursive: true });
 	}
 
-	const isSolid = to.includes('solid');
-
-	const SVG = isSolid ? SVG_SOLID : SVG_OUTLINE;
-
-	const ICON_TEMPLATE = isSolid ? ICON_SOLID_TEMPLATE : ICON_OUTLINE_TEMPLATE;
+	const [SVG, ICON_TEMPLATE] = to.includes('solid')
+		? [SVG_SOLID, ICON_SOLID_TEMPLATE]
+		: [SVG_OUTLINE, ICON_OUTLINE_TEMPLATE];
 
 	for (const fileOrFolder of readdirSync(from)) {
 		if (IGNORE_FILES_OR_FOLDERS.includes(fileOrFolder)) {
@@ -80,5 +67,3 @@ function builder(from = SRC_HEROICONS_PATH, to = DEST_HEROICONS_PATH) {
 		);
 	}
 }
-
-builder();
