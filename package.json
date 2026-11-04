@@ -24,13 +24,7 @@
 		"format": "prettier --write ."
 	},
 	"peerDependencies": {
-		"heroicons": "2.2.0",
 		"svelte": "^5.0.0"
-	},
-	"peerDependenciesMeta": {
-		"heroicons": {
-			"optional": true
-		}
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
@@ -47,7 +41,6 @@
 		"prettier-plugin-svelte": "^4.1.1",
 		"svelte": "^5.57.3",
 		"svelte-check": "^4.7.8",
-		"tsx": "^4.23.15",
 		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.72.1",
 		"vite": "^8.3.5"

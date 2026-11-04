@@ -7,6 +7,8 @@ on:
 env:
   NODE_VERSION: 26
   PNPM_VERSION: 12
+  HEROICONS_VERSION: 2.2.0
+  TSX_VERSION: ^4.23.15
 
 jobs:
   publish:
@@ -43,8 +45,11 @@ jobs:
         uses: actions/cache@v6
         with:
           path: src/lib
-          key: ${{ runner.os }}-icons-${{ hashFiles('scripts/**/*') }}
-          restore-keys: ${{ runner.os }}-icons-
+          key: ${{ runner.os }}-icons-${{ hashFiles('scripts/**/*') }}-heroicons@${{ env.HEROICONS_VERSION }}
+
+      - name: Install build dependencies
+        if: steps.icons-cache.outputs.cache-hit != 'true'
+        run: pnpm add -D --no-save heroicons@${{ env.HEROICONS_VERSION }} tsx@${{ env.TSX_VERSION }}
 
       - name: Build icons
         if: steps.icons-cache.outputs.cache-hit != 'true'
@@ -62,7 +67,6 @@ jobs:
         with:
           path: dist
           key: ${{ runner.os }}-prepack-${{ hashFiles('src/lib/**/*') }}
-          restore-keys: ${{ runner.os }}-prepack-
 
       - name: Prepack
         if: steps.prepack-cache.outputs.cache-hit != 'true'
