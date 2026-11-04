@@ -8,4 +8,3 @@ bun.lockb
 # Miscellaneous
 /static/
 /src/lib
-/scripts/templates/IconExport.tpl
