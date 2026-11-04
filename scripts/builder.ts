@@ -1,13 +1,12 @@
 import {
-	appendFileSync,
 	existsSync,
 	lstatSync,
 	mkdirSync,
 	readdirSync,
 	readFileSync,
 	writeFileSync
-} from 'fs';
-import { join } from 'path';
+} from 'node:fs';
+import { join } from 'node:path';
 import { IGNORE_FILES_OR_FOLDERS, TEMPLATE_PATH } from './constants';
 
 const ICON_SOLID_TEMPLATE = readFileSync(TEMPLATE_PATH + '/IconSolid.tpl', 'utf-8');
